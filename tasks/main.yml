@@ -1,0 +1,28 @@
+---
+# tasks file for yum_cron
+
+- name: Ensures cron(ie) installed
+  yum: name=cronie state=present
+  tags: cronie
+
+- name: Ensures cron(ie) service is running
+  service: name=crond state=started enabled=yes
+  tags: cronie
+
+- name: Ensures yum-cron installed
+  yum: name=yum-cron state=present
+  tags: yum-cron
+
+- name: Configure yum-cron.conf
+  template: src=yum-cron.conf.j2 dest=/etc/yum/yum-cron.conf
+  notify: restart yum-cron
+  tags: yum-cron
+
+- name: Configure yum-cron-hourly.conf
+  template: src=yum-cron-hourly.conf.j2 dest=/etc/yum/yum-cron-hourly.conf
+  notify: restart yum-cron
+  tags: yum-cron
+
+- name: Ensures yum-cron service is running
+  service: name=yum-cron state=started enabled=yes
+  tags: yum-cron

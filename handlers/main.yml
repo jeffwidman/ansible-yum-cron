@@ -1,0 +1,5 @@
+---
+# handlers file for yum_cron
+
+- name: restart yum-cron
+  service: name=yum-cron state=restarted enabled=yes
