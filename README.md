@@ -15,7 +15,7 @@ Requirements
 ------------
 
 Tested on CentOS 7.
-Untested but will likely work on CentOS 6 and equivalent RHEL versions.
+Will likely work on equivalent RHEL or RHEL derivatives.
 
 Role Variables
 --------------
