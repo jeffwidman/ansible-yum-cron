@@ -23,6 +23,14 @@ Role Variables
 You'll likely want to change the default `email_to` variable to an email address
 that you actually monitor.
 
+It's also possible to define special yum settings to for example exclude some packages from auto-updating:
+
+<pre>
+#hourly_base_options:
+# - "exclude=java*,kernel*"
+
+#daily_base_options: "{{ hourly_base_options }}"
+</pre>
 
 Example Playbook
 ----------------
@@ -40,3 +48,4 @@ Author Information
 ------------------
 
 Jeff Widman jeff@jeffwidman.com
+Johan Guldmyr jguldmyr@csc.fi
