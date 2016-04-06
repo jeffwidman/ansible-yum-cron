@@ -77,9 +77,10 @@ mdpolicy = group:main
 
 # Uncomment to auto-import new gpg keys (dangerous)
 # assumeyes = True
-
 {% if hourly_base_options is defined %}
+
 # Custom yum changes
 {% for option in hourly_base_options %}
 {{ option }}
 {% endfor %}
+{% endif %}
