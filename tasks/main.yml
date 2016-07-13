@@ -26,3 +26,7 @@
 - name: Ensures yum-cron service is running
   service: name=yum-cron state=started enabled=yes
   tags: yum-cron
+
+- name: Configure yum-cron-clean to run a yum clean regularly
+  template: src=yum_clean_cron.j2 dest=/etc/cron.{{ yum_cron_clean_when }}/yum_clean_cron mode=0755 state={{ yum_cron_clean_state }}
+      
