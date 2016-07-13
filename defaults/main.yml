@@ -27,7 +27,6 @@ daily_random_sleep: 60
 
 yum_cron_clean_what: "all"
 yum_cron_clean_enabled: False
-yum_cron_clean_state: "present"
 #yum_cron_clean_when is what comes after /etc/cron. so /etc/cron.daily/ /etc/cron.monthly
 yum_cron_clean_when: "daily"
 
