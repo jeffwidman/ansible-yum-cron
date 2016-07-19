@@ -24,3 +24,10 @@ daily_download_updates: no
 daily_apply_updates: no
 daily_random_sleep: 60
 #daily_base_options: "{{ hourly_base_options }}"
+
+yum_cron_clean_what: "all"
+yum_cron_clean_enabled: False
+#yum_cron_clean_when is what comes after /etc/cron. so /etc/cron.daily/ /etc/cron.monthly
+yum_cron_clean_when: "daily"
+
+
