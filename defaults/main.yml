@@ -9,6 +9,7 @@ output_width: 80
 email_from: "yum_cron@{{ inventory_hostname }}"
 email_to: root
 email_host: localhost
+debug_level: -2
 
 hourly_update_level: security
 hourly_update_message: yes
