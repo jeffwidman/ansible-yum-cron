@@ -29,4 +29,16 @@
 
 - name: Configure yum-cron-clean to run a yum clean regularly
   template: src=yum_clean_cron.j2 dest=/etc/cron.{{ yum_cron_clean_when }}/yum_clean_cron mode=0755
-      
+  when: yum_cron_clean_enabled|bool == true
+
+- name: Remove the yum-cron-clean files if disabled
+  file:
+    path: /etc/cron.{{ item }}/yum_clean_cron
+    state: absent
+  with_items:
+    - daily
+    - hourly
+    - weekly
+    - monthly
+  when: yum_cron_clean_enabled|bool == false
+  
