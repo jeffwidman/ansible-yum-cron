@@ -6,18 +6,18 @@
 # minimal                            = yum --bugfix upgrade-minimal
 # minimal-security                   = yum --security upgrade-minimal
 # minimal-security-severity:Critical =  --sec-severity=Critical upgrade-minimal
-update_cmd = {{ daily_update_level }}
+update_cmd = {{ yum_cron_daily_update_level }}
 
 # Whether a message should be emitted when updates are available,
 # were downloaded, or applied.
-update_messages = {{ daily_update_message }}
+update_messages = {{ yum_cron_daily_update_message }}
 
 # Whether updates should be downloaded when they are available.
-download_updates = {{ daily_download_updates }}
+download_updates = {{ yum_cron_daily_download_updates }}
 
 # Whether updates should be applied when they are available.  Note
 # that download_updates must also be yes for the update to be applied.
-apply_updates = {{ daily_apply_updates }}
+apply_updates = {{ yum_cron_daily_apply_updates }}
 
 # Maximum amout of time to randomly sleep, in minutes.  The program
 # will sleep for a random amount of time between 0 and random_sleep
@@ -25,35 +25,35 @@ apply_updates = {{ daily_apply_updates }}
 # times that multiple systems will access update servers.  If
 # random_sleep is 0 or negative, the program will run immediately.
 # 6*60 = 360
-random_sleep = {{ daily_random_sleep }}
+random_sleep = {{ yum_cron_daily_random_sleep }}
 
 
 [emitters]
 # Name to use for this system in messages that are emitted.  If
 # system_name is None, the hostname will be used.
-system_name = {{ system_name }}
+system_name = {{ yum_cron_system_name }}
 
 # How to send messages.  Valid options are stdio and email.  If
 # emit_via includes stdio, messages will be sent to stdout; this is useful
 # to have cron send the messages.  If emit_via includes email, this
 # program will send email itself according to the configured options.
 # If emit_via is None or left blank, no messages will be sent.
-emit_via = {{ emit_via }}
+emit_via = {{ yum_cron_emit_via }}
 
 # The width, in characters, that messages that are emitted should be
 # formatted to.
-output_width = {{ output_width }}
+output_width = {{ yum_cron_output_width }}
 
 
 [email]
 # The address to send email messages from.
-email_from = {{ email_from }}
+email_from = {{ yum_cron_email_from }}
 
 # List of addresses to send messages to.
-email_to = {{ email_to }}
+email_to = {{ yum_cron_email_to }}
 
 # Name of the host to connect to to send email messages.
-email_host = {{ email_host }}
+email_host = {{ yum_cron_email_host }}
 
 
 [groups]
@@ -71,7 +71,7 @@ group_package_types = mandatory, default
 # -4: critical
 # -3: critical+errors
 # -2: critical+errors+warnings (default)
-debuglevel = {{ debug_level }}
+debuglevel = {{ yum_cron_debug_level }}
 
 # skip_broken = True
 mdpolicy = group:main
@@ -81,7 +81,7 @@ mdpolicy = group:main
 {% if daily_base_options is defined %}
 
 # Custom yum changes
-{% for option in daily_base_options %}
+{% for option in yum_cron_daily_base_options %}
 {{ option }}
 {% endfor %}
 {% endif %}
