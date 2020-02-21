@@ -78,7 +78,7 @@ mdpolicy = group:main
 
 # Uncomment to auto-import new gpg keys (dangerous)
 # assumeyes = True
-{% if daily_base_options is defined %}
+{% if yum_cron_daily_base_options is defined %}
 
 # Custom yum changes
 {% for option in yum_cron_daily_base_options %}
