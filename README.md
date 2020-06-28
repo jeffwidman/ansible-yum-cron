@@ -20,16 +20,16 @@ Will likely work on equivalent RHEL or RHEL derivatives.
 Role Variables
 --------------
 
-You'll likely want to change the default `email_to` variable to an email address
+You'll likely want to change the default `yum_cron_email_to` variable to an email address
 that you actually monitor.
 
 It's also possible to define special yum settings to for example exclude some packages from auto-updating:
 
 <pre>
-#hourly_base_options:
+#yum_cron_hourly_base_options:
 # - "exclude=java*,kernel*"
 
-#daily_base_options: "{{ hourly_base_options }}"
+#yum_cron_daily_base_options: "{{ yum_cron_hourly_base_options }}"
 </pre>
 
 Example Playbook
@@ -37,7 +37,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: yum-cron, email_to: support@rockclimbing.com, tags: ['yum_cron'] }
+         - { role: yum-cron, yum_cron_email_to: support@rockclimbing.com, tags: ['yum_cron'] }
 
 License
 -------
