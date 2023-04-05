@@ -24,7 +24,7 @@ yum_cron_daily_update_message: yes
 yum_cron_daily_download_updates: no
 yum_cron_daily_apply_updates: no
 yum_cron_daily_random_sleep: 60
-#yum_cron_daily_base_options: "{{ hourly_base_options }}"
+#yum_cron_daily_base_options: "{{ yum_cron_hourly_base_options }}"
 
 yum_cron_clean_what: "all"
 yum_cron_clean_enabled: False
